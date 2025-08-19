@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Overview{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <section class="intro-section" data-aos="fade-up">
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Ranchers&display=swap");
+        </style>
+        <div class = "big-intro">
+            <h2>Boycott Detector</h2>
+        </div>
+    </section>
+
+    <section class="info-section" data-aos="fade-up">
+        <p class="basic-info">
+
+            Show me the brand and I will tell you all you need to know!
+        </p>
+    </section>
+
+    <section>
+        <video autoplay playsinline></video>
+    </section>
+</body>
