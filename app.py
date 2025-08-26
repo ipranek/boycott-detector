@@ -2,6 +2,7 @@
 from flask import Flask, render_template, jsonify
 import sqlite3
 import pandas as pd
+import CORS 
 
 app = Flask(__name__)
 
@@ -11,3 +12,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
