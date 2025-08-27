@@ -31,14 +31,14 @@
     </section>
 
     <script>
-        const video = <document.getElementById('video');
-        const canvas = document.getElementbyId('canvas');
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         const brandInfoDiv = document.getElementById('brand-info');
         const startBtn = document.getElementById('start-camera');
 
         startBtn.addEventListener('click', () => {
-            navigatorr.mediaDevices.getUserMedia({video: true})
+            navigator.mediaDevices.getUserMedia({video: true})
                 .then(stream => {
                     //ok so this hides the button after camera is on; webcam feed is hidden until consent; same for canvas
                     startBtn.style.display = "none"
@@ -52,5 +52,35 @@
                     alert("Camera is required to detect brands.");
 
                 });
+            
+            setInterval(() => {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.drawImage(video, 0, 0);
+
+                canvas.toBlob(blob => {
+                    const formData = new FormData();
+                    formData.append("frame", blob, "frame.jpg");
+
+                    fetch("http://127.0.0.1:5001/detect", {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.brand) {
+                            brandInfoDiv.innerHTML = `
+                                <h3>Brand: ${data.brand}</h3>
+                                <p>Status: ${data.status}</p>
+                                <p>Reason: ${data.reason}</p>
+                            `;
+
+                        
+                        }
+                    });
+                }, "image/jpeg");
+            }, 500);
         })
+
+
 </body>
