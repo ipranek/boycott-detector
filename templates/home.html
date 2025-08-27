@@ -24,6 +24,33 @@
     </section>
 
     <section>
-        <video autoplay playsinline></video>
+        <button id="start-camera">Enable Camera</button>
+        <video id = "video" autoplay playsinline style = "display:none;"></video>
+        <canvas id="canvas"style="display:none;"></canvas>   
+        <div id="brand-info"></div> 
     </section>
+
+    <script>
+        const video = <document.getElementById('video');
+        const canvas = document.getElementbyId('canvas');
+        const ctx = canvas.getContext('2d');
+        const brandInfoDiv = document.getElementById('brand-info');
+        const startBtn = document.getElementById('start-camera');
+
+        startBtn.addEventListener('click', () => {
+            navigatorr.mediaDevices.getUserMedia({video: true})
+                .then(stream => {
+                    //ok so this hides the button after camera is on; webcam feed is hidden until consent; same for canvas
+                    startBtn.style.display = "none"
+                    video.style.display = "block";
+                    canvas.style.display = "block";
+
+                    video.srcObject = stream;
+                })
+                .catch(err => {
+                    console.error("Camera access denied; request permission pls", err);
+                    alert("Camera is required to detect brands.");
+
+                });
+        })
 </body>
