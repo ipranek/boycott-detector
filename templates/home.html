@@ -69,6 +69,14 @@
                     .then(res => res.json())
                     .then(data => {
                         if (data.brand) {
+                            let statusClass = "unknown";
+                            if (data.status.toLowerCase().includes("boycott")) {
+                                statusClass = "boycott"
+                            } else if (data.status.toLowerCase().includes ("not boycotted")) {
+                                statusClass = "safe"
+                            }
+
+                            brandInfoDiv.className = statusClass;
                             brandInfoDiv.innerHTML = `
                                 <h3>Brand: ${data.brand}</h3>
                                 <p>Status: ${data.status}</p>
