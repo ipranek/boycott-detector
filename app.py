@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, jsonify
 import sqlite3
 import pandas as pd
-import flask_cors as CORS
+from flask_cors import CORS
 import cv2
 import numpy as np
 from ultralytics import YOLO
@@ -56,7 +56,7 @@ def detect(): #doing a new detection script bc the og one does it only for testi
 
 
 CORS(app, resources={r"/*": {"origins": "*"}}) #"GET" fetches info, "POST" sends the data to the server (process)
-@app .route("/")
+@app.route("/")
 def home():
     return render_template("home.html")
 
