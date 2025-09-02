@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+boycott-detector-env/
+venv/
+.env/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Model weights
+*.pt
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Other big generated files
+*.jpg
+*.png
+*.mp4
+*.avi
