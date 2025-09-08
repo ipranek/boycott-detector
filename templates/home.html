@@ -84,6 +84,11 @@
                             `;
 
                             brandInfoDiv.scrollIntoView({behviour: "smooth", block: "center"})
+                            //either:
+                                //have the detection not stop as one gets detected and have a continous series of detections
+                                //lowkey this can lead to a lot of mis-detected brands, kırmızı kedi literally is labeled for most things read
+                            //or:
+                                //put a button that says smthg like "check another brand" and have the detection reload without having to reload the whole page
                         }
                     });
                 }, "image/jpeg");
