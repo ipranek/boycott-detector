@@ -37,6 +37,8 @@
         const brandInfoDiv = document.getElementById('brand-info');
         const startBtn = document.getElementById('start-camera');
 
+        let detectionInterval;
+
         startBtn.addEventListener('click', () => {
             navigator.mediaDevices.getUserMedia({video: true})
                 .then(stream => {
@@ -46,14 +48,18 @@
                     canvas.style.display = "block";
 
                     video.srcObject = stream;
+
+                    startDetection();
                 })
                 .catch(err => {
                     console.error("Camera access denied; request permission pls", err);
                     alert("Camera is required to detect brands.");
 
                 });
+        });
             
-            setInterval(() => {
+        function startDetection() {
+            detectionInterval = setInterval(() => {
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
                 ctx.drawImage(video, 0, 0);
@@ -81,20 +87,27 @@
                                 <h3>Brand: ${data.brand}</h3>
                                 <p>Status: ${data.status}</p>
                                 <p>Reason: ${data.reason}</p>
+                                <button id="check-another">Check another brand</button> 
                             `;
 
-                            brandInfoDiv.scrollIntoView({behviour: "smooth", block: "center"})
-                            //either:
-                                //have the detection not stop as one gets detected and have a continous series of detections
-                                //lowkey this can lead to a lot of mis-detected brands, kırmızı kedi literally is labeled for most things read
-                            //or:
-                                //put a button that says smthg like "check another brand" and have the detection reload without having to reload the whole page
-                        }
+                            brandInfoDiv.scrollIntoView({behavior: "smooth", block: "center"})
+
+                            clearInterval(detectionInterval);
+
+                            document.getElementById("check-another").addEventListener("click", () => {
+                                brandInfoDiv.innerHTML = ""
+                                startDetection(); 
+                            
+                            });
+                        //either:
+                            //have the detection not stop as one gets detected and have a continous series of detections
+                            //lowkey this can lead to a lot of mis-detected brands, kırmızı kedi literally is labeled for most things read
+                        //or:
+                        }    //put a button that says smthg like "check another brand" and have the detection reload without having to reload the whole page
+                        
                     });
                 }, "image/jpeg");
             }, 500);
-        })
+        }
     </script>
 
-
-</body>
