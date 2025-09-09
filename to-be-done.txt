@@ -1,0 +1,8 @@
+Retrain Model:
+    Aims:
+        More variety
+        Reduce false positives
+    How:
+        Get 3-4 more brands
+        Use proper augmentation (ex: Albumentations) {see here: https://medium.com/@amit25173/fine-tuning-yolov8-a-practical-guide-61343dada5c1}
+        Add "backgrounds" of unlabeled pictures to the dataset. 
