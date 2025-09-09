@@ -4,4 +4,6 @@ Trained a personally-made labeled brand dataset of approx. 200 images using YOLO
 
 The user consents to the embedded camera to "see" a brand, the images get processed on the server and the boycott status of the brand and its reason gets shown. 
 
+Currently changing the dataset to reduce false positives and deliver more varied brand-detection. 
+
 
