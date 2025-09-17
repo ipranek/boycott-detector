@@ -54,6 +54,8 @@ def detect(): #doing a new detection script bc the og one does it only for testi
         })
     else: return jsonify({"brand": brand_name, "status": "Unknown", "reason": "Not in database"})
 
+    #maybe also draw the aftual boundaries as well
+
 
 CORS(app, resources={r"/*": {"origins": "*"}}) #"GET" fetches info, "POST" sends the data to the server (process)
 @app.route("/")
