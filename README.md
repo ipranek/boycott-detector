@@ -33,7 +33,8 @@ Built a custom logo dataset with approximately 200 images using Label Studio. Ap
 Expanding brand coverage. Currently only has 5 brands: D&R, Mavi, Espressolab, Watsons, and Kırmızı Kedi. Also, improving false positive rate by introducing "background" images. 
 
 # How to Run Locally?
+```
 pip install -r requirements.txt <br/>
 python app.py
-
+```
 
