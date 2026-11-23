@@ -11,7 +11,7 @@ This project was undertaken after 19 March 2025, an important turning point in T
 **Backend**: Python Flask <br/>
 **Database**: SQL <br/>
 **Data Annotation**: Label Studio <br/>
-**Deployment**: Flask-based server-side API <br/>
+**Deployment**: Flask-based server-side API (not yet deployed) <br/>
 **Model Training**: Custom dataset, data augmentation <br/>
 
 # System Architecture:
